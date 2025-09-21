@@ -368,6 +368,8 @@ let padroesQuery = supabase
       habilidadesQuery
     ]);
 
+    console.log(padroesResult)
+
     if (padroesResult.error) throw padroesResult.error;
     if (habilidadesResult.error) throw habilidadesResult.error;
 
