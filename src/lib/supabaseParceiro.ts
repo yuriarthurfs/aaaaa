@@ -339,6 +339,8 @@ let padroesQuery = supabase
   .not('padrao_desempenho', 'is', null)
   .not('padrao_desempenho', 'eq', '');
 
+    console.log(padroesQuery)
+
 
     // Busca habilidades únicas
     let habilidadesQuery = supabase
@@ -350,7 +352,11 @@ let padroesQuery = supabase
     const filtrosLimpos = { ...filters };
 
     // Aplica filtros para a busca de padrões (exceto ele mesmo)
-
+    Object.entries(filtrosLimpos).forEach(([key, value]) => {
+      if (value && key !== 'padrao_desempenho') {
+        padroesQuery = padroesQuery.eq(key, value);
+      }
+    });
 
     // Aplica filtros à busca de habilidades, incluindo o padrão, se houver
     Object.entries(filtrosLimpos).forEach(([key, value]) => {
