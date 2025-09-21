@@ -373,6 +373,7 @@ let padroesQuery = supabase
 
     const padroesUnicos = [...new Set(
       padroesResult.data?.map(item => item.padrao_desempenho).filter(Boolean) || []
+      console.log(padroesResult)
     )].sort();
 
     const habilidadesMap = new Map();
