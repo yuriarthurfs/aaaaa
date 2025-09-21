@@ -347,6 +347,8 @@ let padroesQuery = supabase
       .not('habilidade_codigo', 'is', null)
       .not('habilidade_codigo', 'eq', '');
 
+    console.log(filters)
+
     const filtrosLimpos = { ...filters };
 
     // Aplica filtros para a busca de padrões (exceto ele mesmo)
