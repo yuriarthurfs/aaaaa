@@ -335,7 +335,7 @@ export const getFilterOptionsParceiro = async (filters: any = {}) => {
     // Busca níveis de aprendizagem únicos
 let padroesQuery = supabase
   .from('prova_resultados_parceiro')
-  .select('padrao_desempenho', { distinct: true })
+  .select('padrao_desempenho')
   .not('padrao_desempenho', 'is', null)
   .not('padrao_desempenho', 'eq', '');
 
