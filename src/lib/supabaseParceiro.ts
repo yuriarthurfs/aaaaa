@@ -339,8 +339,6 @@ let padroesQuery = supabase
   .not('padrao_desempenho', 'is', null)
   .not('padrao_desempenho', 'eq', '');
 
-    console.log(padroesQuery)
-
 
     // Busca habilidades únicas
     let habilidadesQuery = supabase
