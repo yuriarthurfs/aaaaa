@@ -333,9 +333,12 @@ export const searchStudentsParceiro = async (searchTerm: string, filters: any = 
 export const getFilterOptionsParceiro = async (filters: any = {}) => {
   try {
     // Busca níveis de aprendizagem únicos
-    let padroesQuery = supabase
-      .from('prova_resultados_parceiro')
-      .select('padrao_desempenho');
+let padroesQuery = supabase
+  .from('prova_resultados_parceiro')
+  .select('padrao_desempenho', { distinct: true })
+  .not('padrao_desempenho', 'is', null)
+  .not('padrao_desempenho', 'eq', '');
+
 
     // Busca habilidades únicas
     let habilidadesQuery = supabase
@@ -347,11 +350,13 @@ export const getFilterOptionsParceiro = async (filters: any = {}) => {
     const filtrosLimpos = { ...filters };
 
     // Aplica filtros para a busca de padrões (exceto ele mesmo)
-    Object.entries(filtrosLimpos).forEach(([key, value]) => {
-      if (value && key !== 'padrao_desempenho') {
-        padroesQuery = padroesQuery.eq(key, value);
-      }
-    });
+// mantém a aplicação dos filtros (exceto padrao_desempenho)
+Object.entries(filtrosLimpos).forEach(([key, value]) => {
+  if (value && key !== 'padrao_desempenho') {
+    padroesQuery = padroesQuery.eq(key, value);
+  }
+});
+
 
     // Aplica filtros à busca de habilidades, incluindo o padrão, se houver
     Object.entries(filtrosLimpos).forEach(([key, value]) => {
