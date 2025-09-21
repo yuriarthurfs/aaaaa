@@ -371,8 +371,6 @@ let padroesQuery = supabase
     if (padroesResult.error) throw padroesResult.error;
     if (habilidadesResult.error) throw habilidadesResult.error;
 
-    console.log(padroesResult)
-
     const padroesUnicos = [...new Set(
       padroesResult.data?.map(item => item.padrao_desempenho).filter(Boolean) || []
     )].sort();
