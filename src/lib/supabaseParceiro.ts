@@ -365,7 +365,7 @@ export const getFilterOptionsParceiro = async (filters: any = {}) => {
       let q = supabase
         .from('prova_resultados_parceiro')
         .select('padrao_desempenho')
-        .in('padrao_desempenho', ['Básico', 'Abaixo do básico', 'Adequado']);
+        .in('padrao_desempenho', ['Básico', 'Abaixo do Básico', 'Adequado']);
 
       // aplica filtros exceto ele mesmo
       Object.entries(filtrosLimpos).forEach(([key, value]) => {
