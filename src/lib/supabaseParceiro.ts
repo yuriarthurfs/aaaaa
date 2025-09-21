@@ -330,6 +330,31 @@ export const searchStudentsParceiro = async (searchTerm: string, filters: any = 
   return uniqueNames;
 };
 
+// Paginação padrão (pageSize = 1000) para qualquer query do Supabase
+const fetchAllPaginated = async <T>(buildQuery: () => any, pageSize = 1000): Promise<T[]> => {
+  const all: T[] = [];
+  let page = 0;
+  let hasMore = true;
+
+  while (hasMore) {
+    // IMPORTANTE: construir uma NOVA query a cada iteração
+    const query = buildQuery().range(page * pageSize, (page + 1) * pageSize - 1);
+    const { data, error } = await query;
+    if (error) throw error;
+
+    if (data && data.length > 0) {
+      all.push(...data);
+      hasMore = data.length === pageSize;
+      page++;
+    } else {
+      hasMore = false;
+    }
+  }
+
+  return all;
+};
+
+
 export const getFilterOptionsParceiro = async (filters: any = {}) => {
   try {
     // Busca níveis de aprendizagem únicos
