@@ -350,13 +350,11 @@ let padroesQuery = supabase
     const filtrosLimpos = { ...filters };
 
     // Aplica filtros para a busca de padrões (exceto ele mesmo)
-// mantém a aplicação dos filtros (exceto padrao_desempenho)
-Object.entries(filtrosLimpos).forEach(([key, value]) => {
-  if (value && key !== 'padrao_desempenho') {
-    padroesQuery = padroesQuery.eq(key, value);
-  }
-});
-
+    Object.entries(filtrosLimpos).forEach(([key, value]) => {
+      if (value && key !== 'padrao_desempenho') {
+        padroesQuery = padroesQuery.eq(key, value);
+      }
+    });
 
     // Aplica filtros à busca de habilidades, incluindo o padrão, se houver
     Object.entries(filtrosLimpos).forEach(([key, value]) => {
