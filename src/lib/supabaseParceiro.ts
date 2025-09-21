@@ -353,7 +353,6 @@ let padroesQuery = supabase
     Object.entries(filtrosLimpos).forEach(([key, value]) => {
       if (value && key !== 'padrao_desempenho') {
         padroesQuery = padroesQuery.eq(key, value);
-        console.log(padroesQuery)
       }
     });
 
