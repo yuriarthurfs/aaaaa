@@ -14,10 +14,11 @@ const EvolutionSummaryCards: React.FC<EvolutionSummaryCardsProps> = ({ data, sel
       '1': {},
       '2': {}
     };
+    
 
     data.forEach(item => {
       if (item.avaliado) {
-        const studentKey = `${item.nome_aluno}-${item.tur${item.componente}`;
+        const studentKey = `${item.nome_aluno}-${item.turma}-${item.componente}`;
         if (!studentsBySemester[item.semestre][studentKey]) {
           studentsBySemester[item.semestre][studentKey] = [];
         }
