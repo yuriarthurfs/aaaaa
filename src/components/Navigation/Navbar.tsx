@@ -90,6 +90,17 @@ const Navbar: React.FC<NavbarProps> = ({
               Comparação Provas
             </button>
             <button
+              onClick={() => onTabChange('semestres')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                activeTab === 'semestres'
+                  ? `bg-${systemColor}-100 text-${systemColor}-700`
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+              }`}
+            >
+              <GitCompare className="w-4 h-4" />
+              Comparação Semestres
+            </button>
+            <button
               onClick={() => onTabChange('atividades')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === 'atividades'
