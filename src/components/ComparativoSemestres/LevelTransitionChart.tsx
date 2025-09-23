@@ -88,21 +88,27 @@ const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selec
     });
 
     // Classificar transições
-    const sortedTransitions = Object.entries(transitions)
-      .map(([transition, count]) => {
-        const [from, to] = transition.split(' → ');
-        const isImprovement = isLevelImprovement(from, to, selectedSystem);
-        const isDecline = isLevelDecline(from, to, selectedSystem);
-        
-        return {
-          transition,
-          from,
-          to,
-          count,
-          type: isImprovement ? 'improvement' : isDecline ? 'decline' : 'stable'
-        };
-      })
-      .sort((a, b) => b.count - a.count);
+const sortedTransitions = Object.entries(transitions)
+  .map(([transition, count]) => {
+    const [from, to] = transition.split(' → ');
+
+    // 🔑 normalizar os nomes
+    const normFrom = normalizeLevel(from, selectedSystem);
+    const normTo = normalizeLevel(to, selectedSystem);
+
+    const isImprovement = isLevelImprovement(normFrom, normTo, selectedSystem);
+    const isDecline = isLevelDecline(normFrom, normTo, selectedSystem);
+
+    return {
+      transition,
+      from,
+      to,
+      count,
+      type: isImprovement ? 'improvement' : isDecline ? 'decline' : 'stable'
+    };
+  })
+  .sort((a, b) => b.count - a.count);
+
 
     return {
       transitions: sortedTransitions,
