@@ -111,7 +111,7 @@ const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selec
 
   const systemColor = selectedSystem === 'prova-parana' ? 'blue' : 'green';
 
-  console.log(transitionData)
+  
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
