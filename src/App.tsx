@@ -21,8 +21,8 @@ function App() {
   const [selectedSystem, setSelectedSystem] = useState<'prova-parana' | 'parceiro' | null>(() => {
     return (localStorage.getItem('selectedSystem') as 'prova-parana' | 'parceiro') || null;
   });
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao'>(() => {
-    return (localStorage.getItem('activeTab') as 'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao') || 'dashboard';
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao' | 'semestres'>(() => {
+    return (localStorage.getItem('activeTab') as 'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao' | 'semestres') || 'dashboard';
   });
 
   useEffect(() => {
