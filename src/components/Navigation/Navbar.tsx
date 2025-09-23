@@ -9,8 +9,8 @@ interface NavbarProps {
   user: User;
   userProfile: UserProfile | null;
   onLogout: () => void;
-  activeTab: 'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao';
-  onTabChange: (tab: 'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao') => void;
+  activeTab: 'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao' | 'semestres';
+  onTabChange: (tab: 'dashboard' | 'upload' | 'atividades' | 'graficos' | 'comparacao' | 'semestres') => void;
   selectedSystem: 'prova-parana' | 'parceiro';
   onSystemSwitch: () => void;
 }

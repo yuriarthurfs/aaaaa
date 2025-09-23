@@ -130,6 +130,8 @@ function App() {
           <Graficos userProfile={userProfile} selectedSystem={selectedSystem} />
         ) : activeTab === 'comparacao' ? (
           <ComparacaoProvas userProfile={userProfile} />
+        ) : activeTab === 'semestres' ? (
+          <ComparativoSemestres userProfile={userProfile} selectedSystem={selectedSystem} />
         ) : (
           <CadastrarAtividades selectedSystem={selectedSystem} />
         )}
