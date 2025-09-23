@@ -8,6 +8,27 @@ interface LevelTransitionChartProps {
 }
 
 const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selectedSystem }) => {
+  // ✅ Funções agora ficam antes do useMemo
+  const isLevelImprovement = (from: string, to: string, system: 'prova-parana' | 'parceiro'): boolean => {
+    if (system === 'prova-parana') {
+      const levels = ['Insuficiente', 'Básico', 'Adequado', 'Avançado'];
+      return levels.indexOf(to) > levels.indexOf(from);
+    } else {
+      const levels = ['Abaixo do Básico', 'Básico', 'Adequado'];
+      return levels.indexOf(to) > levels.indexOf(from);
+    }
+  };
+
+  const isLevelDecline = (from: string, to: string, system: 'prova-parana' | 'parceiro'): boolean => {
+    if (system === 'prova-parana') {
+      const levels = ['Insuficiente', 'Básico', 'Adequado', 'Avançado'];
+      return levels.indexOf(to) < levels.indexOf(from);
+    } else {
+      const levels = ['Abaixo do Básico', 'Básico', 'Adequado'];
+      return levels.indexOf(to) < levels.indexOf(from);
+    }
+  };
+
   const transitionData = React.useMemo(() => {
     // Agrupar por aluno e semestre
     const studentLevels: Record<string, { sem1?: string; sem2?: string }> = {};
@@ -71,26 +92,6 @@ const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selec
       ).length
     };
   }, [data, selectedSystem]);
-
-  const isLevelImprovement = (from: string, to: string, system: 'prova-parana' | 'parceiro'): boolean => {
-    if (system === 'prova-parana') {
-      const levels = ['Insuficiente', 'Básico', 'Adequado', 'Avançado'];
-      return levels.indexOf(to) > levels.indexOf(from);
-    } else {
-      const levels = ['Abaixo do Básico', 'Básico', 'Adequado'];
-      return levels.indexOf(to) > levels.indexOf(from);
-    }
-  };
-
-  const isLevelDecline = (from: string, to: string, system: 'prova-parana' | 'parceiro'): boolean => {
-    if (system === 'prova-parana') {
-      const levels = ['Insuficiente', 'Básico', 'Adequado', 'Avançado'];
-      return levels.indexOf(to) < levels.indexOf(from);
-    } else {
-      const levels = ['Abaixo do Básico', 'Básico', 'Adequado'];
-      return levels.indexOf(to) < levels.indexOf(from);
-    }
-  };
 
   const getTransitionColor = (type: string) => {
     switch (type) {
