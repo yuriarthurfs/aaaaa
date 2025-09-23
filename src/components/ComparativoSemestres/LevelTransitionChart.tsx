@@ -7,6 +7,7 @@ interface LevelTransitionChartProps {
   selectedSystem: 'prova-parana' | 'parceiro';
 }
 
+
 const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selectedSystem }) => {
   const transitionData = React.useMemo(() => {
     // Agrupar por aluno e semestre
