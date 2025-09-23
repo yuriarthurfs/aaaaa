@@ -12,6 +12,7 @@ import UploadFormParceiro from './components/Upload/UploadFormParceiro';
 import CadastrarAtividades from './components/CadastrarAtividades/CadastrarAtividades';
 import Graficos from './components/Graficos/Graficos';
 import ComparacaoProvas from './components/ComparacaoProvas/ComparacaoProvas';
+import ComparativoSemestres from './components/ComparativoSemestres/ComparativoSemestres';
 import { UserProfile } from './types';
 
 function App() {
