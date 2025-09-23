@@ -14,7 +14,7 @@ const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selec
 
     data.forEach(item => {
       if (item.avaliado) {
-        const studentKey = `${item.nome_aluno}-${item.turma}-${item.componente}`;
+        const studentKey = `${item.nome_aluno}-${item.componente}`;
         const level = selectedSystem === 'prova-parana' 
           ? item.nivel_aprendizagem 
           : (item as ProvaResultadoParceiro).padrao_desempenho;
