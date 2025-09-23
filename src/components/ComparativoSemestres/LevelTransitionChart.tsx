@@ -7,6 +7,26 @@ interface LevelTransitionChartProps {
   selectedSystem: 'prova-parana' | 'parceiro';
 }
 
+// Mapa para normalizar os níveis
+const normalizeLevel = (level: string, system: 'prova-parana' | 'parceiro') => {
+  if (system === 'prova-parana') {
+    const map: Record<string, string> = {
+      'Defasagem': 'Insuficiente',
+      'Aprendizado Intermediário': 'Básico',
+      'Aprendizado Adequado': 'Adequado'
+    };
+    return map[level] || level;
+  } else {
+    const map: Record<string, string> = {
+      'Abaixo do Básico': 'Abaixo do Básico',
+      'Básico': 'Básico',
+      'Adequado': 'Adequado'
+    };
+    return map[level] || level;
+  }
+};
+
+
 const LevelTransitionChart: React.FC<LevelTransitionChartProps> = ({ data, selectedSystem }) => {
   // ✅ Funções agora ficam antes do useMemo
   const isLevelImprovement = (from: string, to: string, system: 'prova-parana' | 'parceiro'): boolean => {
