@@ -1,5 +1,5 @@
 import React from 'react';
-import { School, BarChart3, Upload, LogOut, BookOpen, PieChart, RefreshCw, GitCompare } from 'lucide-react';
+import { School, BarChart3, Upload, LogOut, BookOpen, PieChart, RefreshCw, GitCompare, Calendar } from 'lucide-react';
 import { auth } from '../../lib/firebase';
 import { signOut } from 'firebase/auth';
 import { User } from 'firebase/auth';
